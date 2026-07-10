@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d2240"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1e3a5f" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- Accent glow circle -->
+  <circle cx="1050" cy="100" r="260" fill="#2563eb" opacity="0.07"/>
+  <circle cx="200"  cy="530" r="200" fill="#2563eb" opacity="0.05"/>
+
+  <!-- Logo badge -->
+  <rect x="90" y="200" width="80" height="80" rx="20" fill="#2563eb"/>
+  <text x="130" y="252" font-family="system-ui, -apple-system, sans-serif"
+        font-size="36" font-weight="800" fill="white" text-anchor="middle">RC</text>
+
+  <!-- Institution name -->
+  <text x="90" y="336" font-family="system-ui, -apple-system, sans-serif"
+        font-size="22" font-weight="600" fill="#93c5fd" letter-spacing="3">RED CIUDADANA</text>
+
+  <!-- AI name -->
+  <text x="90" y="420" font-family="system-ui, -apple-system, sans-serif"
+        font-size="88" font-weight="800" fill="white" letter-spacing="-3">PotencIA</text>
+
+  <!-- Tagline -->
+  <text x="90" y="478" font-family="system-ui, -apple-system, sans-serif"
+        font-size="26" font-weight="400" fill="#64748b">
+    Asistente de inteligencia artificial institucional
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="90" y="520" width="120" height="4" rx="2" fill="#2563eb"/>
+</svg>
