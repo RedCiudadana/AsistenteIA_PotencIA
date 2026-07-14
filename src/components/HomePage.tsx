@@ -99,14 +99,13 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-            El asistente inteligente para
+            PotencIA
             <br />
-            <span className="text-[#60a5fa]">la gestión pública</span>
+            <span className="text-[#60a5fa]">Inteligencia artificial diseñada para fortalecer la gestión pública</span>
           </h1>
 
           <p className="text-white/70 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Redacta, resume, busca normativa y crea borradores administrativos en minutos.
-            Diseñado para funcionarios públicos, sin necesidad de conocimientos técnicos.
+            Transformamos documentos, normativa, datos y conocimiento institucional en asistentes especializados que ayudan a los equipos públicos a encontrar información, analizar casos y generar borradores con mayor agilidad.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
