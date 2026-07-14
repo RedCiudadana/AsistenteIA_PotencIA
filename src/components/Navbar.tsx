@@ -5,7 +5,6 @@ import {
   Twitter, Facebook, Youtube, Linkedin, Instagram,
   LogOut, ShieldCheck,
 } from 'lucide-react';
-import { useAppSettings } from '../context/AppSettingsContext';
 import { useAuth } from '../context/AuthContext';
 import { ROLE_LABELS, ROLE_COLORS } from '../lib/permissions';
 
@@ -41,15 +40,11 @@ interface NavbarProps {
 }
 
 export default function Navbar({ active, onNavigate, onLoginClick }: NavbarProps) {
-  const { settings }   = useAppSettings();
   const { user, role, session, signOut, canAccess } = useAuth();
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showAdminMenu, setShowAdminMenu] = useState(false);
   const [mobileAdminOpen, setMobileAdminOpen] = useState(false);
-
-  const platformName    = settings?.platform_name    ?? 'Red Ciudadana';
-  const platformTagline = settings?.platform_tagline ?? 'Plataforma Institucional';
 
   const visibleMain = session
     ? MAIN_NAV_ITEMS.filter((item) => canAccess(item.section))
@@ -111,19 +106,14 @@ export default function Navbar({ active, onNavigate, onLoginClick }: NavbarProps
         {/* Logo */}
         <button
           onClick={() => navigate('home')}
-          className="flex items-center gap-2.5 hover:opacity-80 transition-opacity flex-shrink-0"
+          className="flex items-center hover:opacity-80 transition-opacity flex-shrink-0"
+          aria-label="Ir al inicio"
         >
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden bg-[#0d2240]">
-            <img
-              src="https://redciudadana.org/logo_red_ciudadana.png"
-              alt="Logo"
-              className="w-7 h-7 object-contain"
-            />
-          </div>
-          <div className="text-left hidden sm:block">
-            <span className="text-[#0d2240] font-bold text-sm leading-tight block">{platformName}</span>
-            <span className="text-gray-400 text-[10px] leading-none block">{platformTagline}</span>
-          </div>
+          <img
+            src="https://redciudadana.org/logo_red_ciudadana.png"
+            alt="Red Ciudadana"
+            className="h-10 w-auto max-w-[150px] object-contain"
+          />
         </button>
 
         <div className="hidden lg:block w-px h-6 bg-gray-200 flex-shrink-0" />
