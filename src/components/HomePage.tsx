@@ -3,12 +3,10 @@ import {
   FileText,
   Search,
   FileOutput,
-  ShieldCheck,
   ArrowRight,
   CheckCircle,
   Users,
   Zap,
-  Lock,
   ChevronRight,
 } from 'lucide-react';
 
@@ -73,12 +71,6 @@ const steps = [
       'Un funcionario revisa la respuesta antes de usarla oficialmente. Siempre hay supervisión humana.',
     icon: CheckCircle,
   },
-];
-
-const trust = [
-  { icon: Lock, label: 'Datos protegidos', desc: 'Tu información nunca se comparte fuera de la institución.' },
-  { icon: ShieldCheck, label: 'Altos estándares', desc: 'Cumplimos con las normas de seguridad del sector público.' },
-  { icon: Users, label: 'Supervisión humana', desc: 'Toda respuesta debe ser revisada por un funcionario.' },
 ];
 
 
@@ -218,37 +210,6 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
               Empezar ahora
               <ArrowRight size={16} />
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Trust & security ── */}
-      <section className="max-w-5xl mx-auto px-8 py-16">
-        <div className="bg-gradient-to-br from-[#0d2240] to-[#1e3a5f] rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
-          <div className="relative">
-            <div className="flex items-center gap-2 mb-3">
-              <ShieldCheck size={18} className="text-[#22c55e]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-white/60">Seguridad y confianza</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Tu información siempre está protegida</h2>
-            <p className="text-white/60 text-sm max-w-xl leading-relaxed mb-10">
-              Red Ciudadana cumple con los más altos estándares de seguridad para el sector público. Tus documentos y consultas nunca salen del entorno institucional.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {trust.map(({ icon: Icon, label, desc }) => (
-                <div key={label} className="bg-white/10 border border-white/15 rounded-2xl p-4">
-                  <div className="w-9 h-9 bg-white/15 rounded-xl flex items-center justify-center mb-3">
-                    <Icon size={18} className="text-[#22c55e]" />
-                  </div>
-                  <h4 className="font-bold text-sm mb-1">{label}</h4>
-                  <p className="text-white/55 text-xs leading-relaxed">{desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
