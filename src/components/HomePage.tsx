@@ -95,7 +95,7 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
               alt="Red Ciudadana"
               className="h-3.5 w-auto opacity-80"
             />
-            <span className="text-white/80 text-sm font-medium">Sitio oficial de la Asociacion Civil Red Ciudadana</span>
+            <span className="text-white/70 text-xs font-medium">Una iniciativa de Red Ciudadana para promover el uso responsable, útil y centrado en las personas de la inteligencia artificial en el sector público.</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
@@ -114,14 +114,14 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
               className="inline-flex items-center justify-center gap-2 bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-7 py-3.5 rounded-xl text-base transition-all duration-150 shadow-lg shadow-blue-900/30 hover:shadow-xl hover:-translate-y-0.5"
             >
               <Bot size={20} />
-              Usar el Asistente IA
+              Explorar PotencIA
               <ArrowRight size={18} />
             </button>
             <a
               href="#como-funciona"
               className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-7 py-3.5 rounded-xl text-base transition-all duration-150"
             >
-              Ver cómo funciona
+              Conocer el caso jurídico municipal
             </a>
           </div>
 
