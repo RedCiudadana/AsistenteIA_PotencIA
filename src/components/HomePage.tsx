@@ -3,6 +3,7 @@ import {
   FileText,
   Search,
   FileOutput,
+  ShieldCheck,
   ArrowRight,
   CheckCircle,
   Users,
