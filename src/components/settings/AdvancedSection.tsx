@@ -170,7 +170,7 @@ export default function AdvancedSection({ draft, onChange, onExport, onReset }: 
             ))}
           </div>
           <p className="text-[10px] text-gray-400 text-center mt-4 leading-relaxed">
-            Desarrollado con fines institucionales. Uso exclusivo del sector público mexicano.
+            Desarrollado con fines institucionales. Uso exclusivo del sector público guatemalteco.
             Los datos se almacenan en infraestructura nacional conforme a la normativa aplicable.
           </p>
         </div>

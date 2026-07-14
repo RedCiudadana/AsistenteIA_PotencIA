@@ -20,12 +20,12 @@ const EVENT_CONFIG: Record<EventType, { label: string; color: string; icon: type
 const MAIN_EVENT_TYPES: EventType[] = ['ai_query','template_used','flow_started','doc_added'];
 
 function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString('es-MX', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+  return new Date(iso).toLocaleDateString('es-GT', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
 }
 
 function dayLabel(iso: string) {
   const d = new Date(iso);
-  return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'short' });
+  return d.toLocaleDateString('es-GT', { day: 'numeric', month: 'short' });
 }
 
 interface KpiCardProps {

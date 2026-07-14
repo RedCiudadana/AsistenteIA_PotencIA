@@ -326,7 +326,7 @@ export default function PrivacySettingsTab({ settings, onSave }: PrivacySettings
               {hasChanges ? 'Tienes cambios sin guardar' : saved ? '¡Configuración guardada!' : 'Configuración actualizada'}
             </p>
             <p className="text-[10px] text-gray-400">
-              Última actualización: {new Date(settings.updated_at).toLocaleString('es-MX')}
+              Última actualización: {new Date(settings.updated_at).toLocaleString('es-GT')}
             </p>
           </div>
           <div className="flex gap-2">

@@ -46,7 +46,7 @@ export default function DocumentsPanel({ onUpload }: DocumentsPanelProps) {
   }, []);
 
   function fmtDate(iso: string) {
-    return new Date(iso).toLocaleDateString('es-MX', {
+    return new Date(iso).toLocaleDateString('es-GT', {
       day: '2-digit', month: '2-digit', year: 'numeric',
     });
   }

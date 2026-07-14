@@ -78,7 +78,7 @@ export default function UsersSection() {
   }
 
   const fmtDate = (iso: string) =>
-    new Date(iso).toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
+    new Date(iso).toLocaleDateString('es-GT', { day: '2-digit', month: 'short', year: 'numeric' });
 
   return (
     <div>

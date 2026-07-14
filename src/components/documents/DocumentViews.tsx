@@ -10,7 +10,7 @@ export const EXT_CONFIG = {
 };
 
 function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
+  return new Date(iso).toLocaleDateString('es-GT', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
 interface ActionMenuProps {

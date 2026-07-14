@@ -2,12 +2,11 @@ import { Building2, Globe, Mail, MapPin, Layers, Shield } from 'lucide-react';
 import type { AppSettings } from '../../lib/supabase';
 
 const STATES = [
-  'Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas',
-  'Chihuahua','Ciudad de México','Coahuila','Colima','Durango','Guanajuato',
-  'Guerrero','Hidalgo','Jalisco','Estado de México','Michoacán','Morelos','Nayarit',
-  'Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí',
-  'Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas',
-  'Gobierno Federal',
+  'Alta Verapaz','Baja Verapaz','Chimaltenango','Chiquimula','El Progreso',
+  'Escuintla','Guatemala','Huehuetenango','Izabal','Jalapa','Jutiapa',
+  'Petén','Quetzaltenango','Quiché','Retalhuleu','Sacatepéquez',
+  'San Marcos','Santa Rosa','Sololá','Suchitepéquez','Totonicapán','Zacapa',
+  'Gobierno Central',
 ];
 
 interface Props {
@@ -129,7 +128,7 @@ export default function InstitutionSection({ draft, onChange }: Props) {
                 type="url"
                 value={draft.institution_website ?? ''}
                 onChange={(e) => onChange('institution_website', e.target.value || null)}
-                placeholder="https://www.institucion.gob.mx"
+                placeholder="https://www.institucion.gob.gt"
                 className="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20 focus:border-[#1e3a5f] transition-all"
               />
             </div>
@@ -141,7 +140,7 @@ export default function InstitutionSection({ draft, onChange }: Props) {
                 type="email"
                 value={draft.institution_email ?? ''}
                 onChange={(e) => onChange('institution_email', e.target.value || null)}
-                placeholder="contacto@institucion.gob.mx"
+                placeholder="contacto@institucion.gob.gt"
                 className="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/20 focus:border-[#1e3a5f] transition-all"
               />
             </div>

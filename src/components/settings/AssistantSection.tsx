@@ -1,19 +1,10 @@
 import { Bot, MessageSquare, BookOpen, Zap, Plus, Trash2, Globe } from 'lucide-react';
 import type { AppSettings } from '../../lib/supabase';
 
-const COUNTRY_OPTIONS = [
-  'Guatemala', 'México', 'El Salvador', 'Honduras', 'Nicaragua',
-  'Costa Rica', 'Panamá', 'República Dominicana', 'Colombia', 'Argentina',
-  'Perú', 'Chile', 'Ecuador', 'Bolivia', 'Uruguay', 'Paraguay',
-  'España', 'Estados Unidos',
-];
+const COUNTRY_OPTIONS = ['Guatemala'];
 
 const COUNTRY_FLAGS: Record<string, string> = {
-  'Guatemala': '🇬🇹', 'México': '🇲🇽', 'El Salvador': '🇸🇻', 'Honduras': '🇭🇳',
-  'Nicaragua': '🇳🇮', 'Costa Rica': '🇨🇷', 'Panamá': '🇵🇦', 'República Dominicana': '🇩🇴',
-  'Colombia': '🇨🇴', 'Argentina': '🇦🇷', 'Perú': '🇵🇪', 'Chile': '🇨🇱',
-  'Ecuador': '🇪🇨', 'Bolivia': '🇧🇴', 'Uruguay': '🇺🇾', 'Paraguay': '🇵🇾',
-  'España': '🇪🇸', 'Estados Unidos': '🇺🇸',
+  'Guatemala': '🇬🇹',
 };
 
 const STYLE_OPTIONS: { value: AppSettings['response_style']; label: string; desc: string; icon: string }[] = [
