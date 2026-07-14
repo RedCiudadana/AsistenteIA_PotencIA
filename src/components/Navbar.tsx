@@ -27,11 +27,11 @@ const ADMIN_NAV_ITEMS: { icon: typeof Home; label: string; section: Section }[] 
 ];
 
 const SOCIAL_LINKS = [
-  { Icon: Twitter,   label: 'Twitter/X', href: '#' },
-  { Icon: Facebook,  label: 'Facebook',  href: '#' },
-  { Icon: Instagram, label: 'Instagram', href: '#' },
+  { Icon: Twitter,   label: 'Twitter/X', href: 'https://twitter.com/redxguate' },
+  { Icon: Facebook,  label: 'Facebook',  href: 'https://www.facebook.com/Redciudadanagt' },
+  { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/redxguate/' },
   { Icon: Youtube,   label: 'YouTube',   href: '#' },
-  { Icon: Linkedin,  label: 'LinkedIn',  href: '#' },
+  { Icon: Linkedin,  label: 'LinkedIn',  href: 'https://www.linkedin.com/company/2532725/' },
 ];
 
 interface NavbarProps {
