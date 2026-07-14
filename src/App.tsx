@@ -11,7 +11,6 @@ import HumanReviewNotice from './components/HumanReviewNotice';
 import UploadDocumentModal from './components/UploadDocumentModal';
 import DocumentsPage from './components/documents/DocumentsPage';
 import StatsPage from './components/stats/StatsPage';
-import PrivacyPage from './components/privacy/PrivacyPage';
 import SettingsPage from './components/settings/SettingsPage';
 import UseCasesPage from './components/usecases/UseCasesPage';
 import { useAppSettings } from './context/AppSettingsContext';
@@ -85,7 +84,6 @@ function AppShell() {
           <DocumentsPage onGoToAssistant={() => navigate('assistant')} />
         )}
         {activeSection === 'stats'    && <StatsPage />}
-        {activeSection === 'privacy'  && <PrivacyPage />}
         {activeSection === 'settings' && <SettingsPage />}
         {activeSection === 'usecases' && <UseCasesPage />}
       </div>

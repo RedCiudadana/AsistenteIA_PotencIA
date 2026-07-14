@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Home, Bot, FileText, BarChart2, Shield, Settings, Lightbulb,
+  Home, Bot, FileText, BarChart2, Settings, Lightbulb,
   Menu, X, ChevronDown,
   Twitter, Facebook, Youtube, Linkedin, Instagram,
   LogOut, ShieldCheck,
@@ -8,9 +8,9 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { ROLE_LABELS, ROLE_COLORS } from '../lib/permissions';
 
-export type Section = 'home' | 'assistant' | 'documents' | 'stats' | 'privacy' | 'settings' | 'usecases';
+export type Section = 'home' | 'assistant' | 'documents' | 'stats' | 'settings' | 'usecases';
 
-const ADMIN_SECTIONS: Section[] = ['stats', 'privacy', 'settings'];
+const ADMIN_SECTIONS: Section[] = ['stats', 'settings'];
 
 const MAIN_NAV_ITEMS: { icon: typeof Home; label: string; section: Section }[] = [
   { icon: Home,      label: 'Inicio',       section: 'home'      },
@@ -21,7 +21,6 @@ const MAIN_NAV_ITEMS: { icon: typeof Home; label: string; section: Section }[] =
 
 const ADMIN_NAV_ITEMS: { icon: typeof Home; label: string; section: Section }[] = [
   { icon: BarChart2, label: 'Estadísticas', section: 'stats'    },
-  { icon: Shield,    label: 'Privacidad',   section: 'privacy'  },
   { icon: Settings,  label: 'Ajustes',      section: 'settings' },
 ];
 

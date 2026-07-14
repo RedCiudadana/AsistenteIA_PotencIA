@@ -2,7 +2,7 @@ import type { UserRole } from '../context/AuthContext';
 import type { Section } from '../components/Navbar';
 
 export const ALL_SECTIONS: Section[] = [
-  'home', 'assistant', 'documents', 'flows', 'usecases', 'stats', 'privacy', 'settings',
+  'home', 'assistant', 'documents', 'flows', 'usecases', 'stats', 'settings',
 ];
 
 export const SECTION_LABELS: Record<Section, string> = {
@@ -12,7 +12,6 @@ export const SECTION_LABELS: Record<Section, string> = {
   flows:     'Flujos',
   usecases:  'Casos de uso',
   stats:     'Estadísticas',
-  privacy:   'Privacidad',
   settings:  'Ajustes',
 };
 
@@ -34,7 +33,7 @@ export const ALWAYS_ON_SECTIONS: Section[] = ['home', 'usecases'];
 // Hardcoded defaults used as fallback while DB permissions are loading
 export const DEFAULT_ROLE_SECTIONS: Record<UserRole, Section[]> = {
   administrador: ALL_SECTIONS,
-  coordinador:   ['home', 'assistant', 'documents', 'flows', 'usecases', 'stats', 'privacy'],
+  coordinador:   ['home', 'assistant', 'documents', 'flows', 'usecases', 'stats'],
   analista:      ['home', 'assistant', 'documents', 'flows', 'usecases', 'stats'],
 };
 
