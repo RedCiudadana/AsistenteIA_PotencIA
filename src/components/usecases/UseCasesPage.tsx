@@ -487,16 +487,6 @@ export default function UseCasesPage() {
             Selecciona un asistente y comienza a trabajar con IA especializada.
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
-            {[
-              { label: '6 asistentes especializados', Icon: Zap, color: 'text-[#60a5fa]' },
-              { label: '2 de prioridad muy alta / alta', Icon: TrendingUp, color: 'text-emerald-400' },
-              { label: 'Supervisión humana requerida', Icon: CheckCircle2, color: 'text-amber-400' },
-            ].map(({ label, Icon, color }) => (
-              <div key={label} className="flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-full px-3 py-1.5">
-                <Icon size={12} className={color} />
-                <span className="text-white/75 text-xs">{label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>
