@@ -13,6 +13,7 @@ import DocumentsPage from './components/documents/DocumentsPage';
 import StatsPage from './components/stats/StatsPage';
 import SettingsPage from './components/settings/SettingsPage';
 import UseCasesPage from './components/usecases/UseCasesPage';
+import InstitutionCTA from './components/InstitutionCTA';
 import { useAppSettings } from './context/AppSettingsContext';
 
 function LoadingScreen() {
@@ -91,6 +92,8 @@ function AppShell() {
       {uploadOpen && (
         <UploadDocumentModal onClose={() => setUploadOpen(false)} />
       )}
+
+      <InstitutionCTA />
 
       {/* Login overlay for unauthenticated users trying to access protected sections */}
       {showLogin && !session && (
