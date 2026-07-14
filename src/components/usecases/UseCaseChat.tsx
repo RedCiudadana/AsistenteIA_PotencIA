@@ -93,10 +93,32 @@ INSTRUCCIONES ADICIONALES:
 
     // RAG: fetch relevant documents and inject as context
     let matchedSources: DocSource[] = [];
-    const { context, sources } = await fetchDocumentContext(text);
+    const { context, sources, hasIndexedContent, noDocsFound } = await fetchDocumentContext(text);
     matchedSources = sources;
     if (context) {
-      systemPrompt += `\n\nDocumentos de referencia del usuario (usa esta información cuando sea relevante):\n\n${context}`;
+      if (hasIndexedContent) {
+        systemPrompt +=
+          '\n\nINSTRUCCIÓN RAG: A continuación se incluyen los documentos normativos relevantes recuperados del banco normativo. ' +
+          'DEBES responder ÚNICAMENTE con base en estos documentos. ' +
+          'Cita siempre el nombre del documento cuando uses su contenido, por ejemplo: [Nombre del documento, Art. X]. ' +
+          'Si la respuesta exacta no se encuentra en estos documentos, indícalo expresamente: ' +
+          '"Esta información no se encuentra en el banco normativo disponible." ' +
+          'NO uses tu conocimiento general cuando hay documentos relevantes.';
+      } else {
+        systemPrompt +=
+          '\n\nINSTRUCCIÓN ESPECIAL: Se encontró un documento relacionado con la consulta ' +
+          '(ver sección "Documentos registrados" abajo), pero aún no tiene texto indexado. ' +
+          'Indica que encontraste el documento por su nombre exacto, ' +
+          'explica que el texto completo aún no está disponible y ' +
+          'pide al usuario que edite el documento en la sección "Documentos" para pegar el texto.';
+      }
+      systemPrompt += `\n\nDOCUMENTOS DEL BANCO NORMATIVO:\n\n${context}`;
+    } else if (!noDocsFound) {
+      systemPrompt +=
+        '\n\nNOTA: Se buscó en el banco normativo pero no se encontraron documentos relacionados con esta consulta. ' +
+        'Indica al usuario que no hay documentos disponibles sobre este tema. ' +
+        'Puedes responder con tu conocimiento general de la legislación guatemalteca, ' +
+        'aclarando que la información no proviene de documentos indexados y debe verificarse en las fuentes oficiales.';
     }
 
     try {
@@ -130,14 +152,6 @@ INSTRUCCIONES ADICIONALES:
       });
     } catch (err) {
       setApiError((err as Error).message);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: (Date.now() + 1).toString(),
-          role: 'assistant',
-          content: 'Entendido. Estoy procesando tu solicitud. Por favor espera un momento mientras genero la mejor respuesta.',
-        },
-      ]);
     } finally {
       setLoading(false);
     }

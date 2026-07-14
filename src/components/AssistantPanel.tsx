@@ -176,26 +176,38 @@ export default function AssistantPanel({ activeModelId, privacyLevel, useDocs }:
     let matchedSources: DocSource[] = [];
     if (useDocs) {
       setLoadingPhase('docs');
-      const { context, sources, hasIndexedContent } = await fetchDocumentContext(text);
+      const { context, sources, hasIndexedContent, noDocsFound } = await fetchDocumentContext(text);
       matchedSources = sources;
       if (context) {
         if (hasIndexedContent) {
-          // Anchor the AI strictly to the provided document content
           systemPrompt +=
-            '\n\nIMPORTANTE — USO DE DOCUMENTOS: Debes responder ÚNICAMENTE con base en los documentos proporcionados a continuación. ' +
-            'Si la respuesta no se encuentra en el contenido de estos documentos, indícalo explícitamente al usuario. ' +
-            'No uses tu conocimiento general sobre el tema cuando existan documentos relevantes; confía en el texto proporcionado.';
+            '\n\nINSTRUCCIÓN RAG: A continuación se incluyen los documentos normativos relevantes recuperados del banco normativo. ' +
+            'DEBES responder ÚNICAMENTE con base en estos documentos. ' +
+            'Cita siempre el nombre del documento cuando uses su contenido, por ejemplo: [Nombre del documento, Art. X]. ' +
+            'Si la respuesta exacta no se encuentra en estos documentos, indícalo expresamente: ' +
+            '"Esta información no se encuentra en el banco normativo disponible." ' +
+            'NO uses tu conocimiento general cuando hay documentos relevantes. Confía exclusivamente en el texto proporcionado.';
         } else {
-          // Documents matched but have no extracted text — give the AI a specific script
           systemPrompt +=
-            '\n\nINSTRUCCIÓN ESPECIAL: Se encontró un documento relacionado con la consulta del usuario ' +
+            '\n\nINSTRUCCIÓN ESPECIAL: Se encontró un documento relacionado con la consulta ' +
             '(ver sección "Documentos registrados" abajo), pero aún no tiene texto indexado. ' +
-            'DEBES responder exactamente así: indica que encontraste el documento por su nombre exacto, ' +
-            'explica que el texto completo aún no está disponible en el sistema porque el archivo fue registrado sin contenido, ' +
+            'Indica que encontraste el documento por su nombre exacto, ' +
+            'explica que el texto completo aún no está disponible porque el archivo fue registrado sin contenido, ' +
             'y pide al usuario que edite el documento en la sección "Documentos" para pegar el texto. ' +
-            'NO respondas con tu conocimiento general sobre el tema. NO digas que no tienes acceso a bases de datos.';
+            'NO respondas con conocimiento general sobre el tema.';
         }
-        systemPrompt += `\n\nDocumentos de referencia del usuario:\n\n${context}`;
+        systemPrompt += `\n\nDOCUMENTOS DEL BANCO NORMATIVO:\n\n${context}`;
+      } else if (noDocsFound) {
+        systemPrompt +=
+          '\n\nNOTA: El banco normativo está vacío. No hay documentos indexados. ' +
+          'Si el usuario pregunta sobre normativa específica, indícalo y responde con tu conocimiento general de la legislación guatemalteca, ' +
+          'aclarando siempre que la información proviene de conocimiento general y debe verificarse en las fuentes oficiales.';
+      } else {
+        systemPrompt +=
+          '\n\nNOTA: Se buscó en el banco normativo pero no se encontraron documentos relacionados con esta consulta. ' +
+          'Indica al usuario que no hay documentos disponibles sobre este tema en el banco normativo. ' +
+          'Puedes responder con tu conocimiento general de la legislación guatemalteca, ' +
+          'aclarando siempre que la información no proviene de los documentos indexados y debe verificarse en las fuentes oficiales.';
       }
     }
 
@@ -240,14 +252,6 @@ export default function AssistantPanel({ activeModelId, privacyLevel, useDocs }:
       });
     } catch (err) {
       setApiError((err as Error).message);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: (Date.now() + 1).toString(),
-          role: 'assistant',
-          content: 'Entendido. Estoy procesando tu solicitud. Por favor espera un momento mientras genero la mejor respuesta.',
-        },
-      ]);
     } finally {
       setLoading(false);
     }

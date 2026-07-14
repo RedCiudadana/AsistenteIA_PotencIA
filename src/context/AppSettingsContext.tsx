@@ -74,7 +74,11 @@ export function buildSystemPrompt(s: AppSettings): string {
   parts.push(styleMap[s.response_style] ?? styleMap.formal);
 
   if (s.ai_cite_sources) {
-    parts.push('Incluye referencias a leyes, artículos y normativas cuando sea relevante.');
+    parts.push(
+      'CITAS Y REFERENCIAS: Cuando uses información de documentos de referencia, cita siempre la fuente ' +
+      'entre corchetes, por ejemplo: [Reglamento Interno, Art. 5] o [Decreto 57-92, Artículo 12]. ' +
+      'Para conocimiento general, indica la ley o norma completa de Guatemala.'
+    );
   }
   if (s.ai_suggest_next) {
     parts.push('Al finalizar cada respuesta, agrega una sección "## Pasos siguientes" con 2-3 acciones o consultas de seguimiento.');
@@ -84,16 +88,21 @@ export function buildSystemPrompt(s: AppSettings): string {
   }
 
   parts.push(
+    'INTEGRIDAD JURÍDICA — REGLAS OBLIGATORIAS:\n' +
+    '1. NUNCA inventes números de artículos, leyes, acuerdos gubernativos, decretos, fechas ni nombres de instituciones que no estén en los documentos proporcionados o en tu conocimiento verificado de la legislación guatemalteca.\n' +
+    '2. Si la información solicitada NO se encuentra en los documentos disponibles, decláralo ANTES de responder con esta frase exacta: "Esta información no se encuentra en el banco normativo disponible."\n' +
+    '3. Cuando respondas con conocimiento general (sin documentos de respaldo), acláralos siempre iniciando con: "Según la legislación general de Guatemala..."\n' +
+    '4. No mezcles información de documentos con conocimiento general sin distinguirlos claramente.\n' +
+    '5. Al final de cada respuesta sobre materia jurídica, incluye: "⚠ Este análisis es preliminar. Debe ser revisado y validado por el funcionario o asesor jurídico responsable antes de su uso oficial."'
+  );
+
+  parts.push(
     'FORMATO DE RESPUESTA: Usa Markdown para estructurar tus respuestas de forma clara y legible. ' +
     'Usa ## para secciones principales, ### para subsecciones, **negrita** para términos clave o información importante, ' +
     '- para listas con viñetas y 1. 2. 3. para pasos numerados. ' +
     'Divide la respuesta en párrafos cortos. ' +
     'Para contenido largo, usa secciones con encabezados. ' +
     'Usa bloques de código (``` ```) solo para código o texto técnico literal.'
-  );
-
-  parts.push(
-    'Siempre recuerda al usuario que debe revisar y validar el contenido generado antes de utilizarlo oficialmente.'
   );
 
   return parts.join('\n\n');
