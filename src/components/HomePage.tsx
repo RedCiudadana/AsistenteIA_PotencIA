@@ -191,7 +191,7 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
               className="h-3 w-auto opacity-70 flex-shrink-0"
             />
             <span className="text-white/60 text-xs leading-snug">
-              Una iniciativa de Red Ciudadana para promover el uso responsable, útil y centrado en las personas de la inteligencia artificial en el sector público.
+              Una iniciativa de Red Ciudadana 
             </span>
           </div>
 
@@ -499,11 +499,10 @@ export default function HomePage({ onGoToAssistant }: HomePageProps) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2.5 mb-2">
-                <img
-                  src="https://redciudadana.org/logo_red_ciudadana.png"
-                  alt="Red Ciudadana"
-                  className="h-10 w-auto max-w-[150px] object-contain"
-                />
+                <div className="w-8 h-8 bg-[#2563eb] rounded-lg flex items-center justify-center">
+                  <Bot size={16} className="text-white" />
+                </div>
+                <span className="text-lg font-bold text-white">PotencIA</span>
               </div>
               <p className="text-white/45 text-xs max-w-xs leading-relaxed">
                 Inteligencia artificial para fortalecer la gestión pública.
